@@ -103,36 +103,132 @@
         </nav>
     </header>
 
-    <!-- ini adalah konten -->
-    <div class="container mx-auto px-4 py-8">
+    <!-- ini adalah fungsi "search" -->
+    <div class="px-4 pt-5 flex justify-end">
+        <form class="relative flex items-center">
+          <label for="simple-search" class="sr-only">Search</label>
+          <div class="relative">
+            <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
+              <svg aria-hidden="true" class="w-5 h-5 text-gray-500 dark:text-gray-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                <path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd"></path>
+              </svg>
+            </div>
+            <input type="text" id="simple-search" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Search" required>
+          </div>
+          <button type="submit" class="p-2.5 ml-2 text-sm font-medium text-white bg-blue-700 rounded-lg border border-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+            </svg>
+            <span class="sr-only">Search</span>
+          </button>
+        </form>
+    </div>
+
+    <script>
+        // Event listener for search form submission
+        document.querySelector('form').addEventListener('submit', function(event) {
+          event.preventDefault();
+          var searchInput = document.getElementById('simple-search').value.toLowerCase();
+          searchProducts(searchInput);
+        });
+      
+        // Function to search products
+        function searchProducts(searchInput) {
+          var productList = document.getElementById('productList');
+          var products = Array.from(productList.getElementsByClassName('product'));
+      
+          products.forEach(function(product) {
+            var productName = product.querySelector('h2').textContent.toLowerCase();
+            if (productName.includes(searchInput)) {
+              product.style.display = 'block';
+            } else {
+              product.style.display = 'none';
+            }
+          });
+        }
+    </script>
+
+     <!-- ini adalah konten -->
+     <div id="productList" class="grid grid-cols-2 md:grid-cols-4 gap-4 px-4">
+        <div>
+          <h1 class="text-2xl font-bold">Daftar Produk</h1>
+        </div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div class="product bg-white rounded-lg shadow-lg p-4">
+          <img class="h-auto max-w-full rounded-lg" src="https://flowbite.s3.amazonaws.com/docs/gallery/square/image.jpg" alt="">
+          <h2 class="text-lg font-bold">Produk 1</h2>
+          <p class="text-gray-500">Deskripsi produk B.</p>
+          <p class="text-gray-900 font-bold mt-2">Tersedia</p>
+        </div>
+        <div class="product bg-white rounded-lg shadow-lg p-4">
+          <img class="h-auto max-w-full rounded-lg" src="https://flowbite.s3.amazonaws.com/docs/gallery/square/image.jpg" alt="">
+          <h2 class="text-lg font-bold">Produk 2</h2>
+          <p class="text-gray-500">Deskripsi produk A.</p>
+          <p class="text-gray-900 font-bold mt-2">Tidak Tersedia</p>
+        </div>
+        <div class="product bg-white rounded-lg shadow-lg p-4">
+          <img class="h-auto max-w-full rounded-lg" src="https://flowbite.s3.amazonaws.com/docs/gallery/square/image.jpg" alt="">
+          <h2 class="text-lg font-bold">Produk 3</h2>
+          <p class="text-gray-500">Deskripsi produk 1.</p>
+          <p class="text-gray-900 font-bold mt-2">Tersedia</p>
+        </div>
+        <div class="product bg-white rounded-lg shadow-lg p-4">
+          <img class="h-auto max-w-full rounded-lg" src="https://flowbite.s3.amazonaws.com/docs/gallery/square/image.jpg" alt="">
+          <h2 class="text-lg font-bold">Produk 4</h2>
+          <p class="text-gray-500">Deskripsi produk D.</p>
+          <p class="text-gray-900 font-bold mt-2">Tersedia</p>
+        </div>
+        <div class="product bg-white rounded-lg shadow-lg p-4">
+          <img class="h-auto max-w-full rounded-lg" src="https://flowbite.s3.amazonaws.com/docs/gallery/square/image.jpg" alt="">
+          <h2 class="text-lg font-bold">Produk 5</h2>
+          <p class="text-gray-500">Deskripsi produk B</p>
+          <p class="text-gray-900 font-bold mt-2">Tersedia</p>
+        </div>
+        <div class="product bg-white rounded-lg shadow-lg p-4">
+          <img class="h-auto max-w-full rounded-lg" src="https://flowbite.s3.amazonaws.com/docs/gallery/square/image.jpg" alt="">
+          <h2 class="text-lg font-bold">Produk 6</h2>
+          <p class="text-gray-500">Deskripsi produk A</p>
+          <p class="text-gray-900 font-bold mt-2">Tersedia</p>
+        </div>
+        <div class="product bg-white rounded-lg shadow-lg p-4">
+          <img class="h-auto max-w-full rounded-lg" src="https://flowbite.s3.amazonaws.com/docs/gallery/square/image.jpg" alt="">
+          <h2 class="text-lg font-bold">Produk 7</h2>
+          <p class="text-gray-500">Deskripsi produk 1.</p>
+          <p class="text-gray-900 font-bold mt-2">Tersedia</p>
+        </div>
+    </div>
+
+    <!-- <div class="container grid-cols-2 mx-auto px-4 py-8">
         <h1 class="text-2xl font-bold mb-4">Daftar Produk</h1>
         <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
             <div class="bg-white rounded-lg shadow-lg p-4">
-                <img src="/src/img/foto1.jpg" alt="Product 1" class="w-full h-32 object-cover mb-4">
+                <img src="src/img/foto1.jpg" alt="Product 1" class="w-full h-32 object-cover mb-4">
                 <h2 class="text-lg font-bold">Produk 1</h2>
                 <p class="text-gray-500">Deskripsi produk 1.</p>
                 <p class="text-gray-900 font-bold mt-2">Tersedia</p>
             </div>
             <div class="bg-white rounded-lg shadow-lg p-4">
-                <img src="/src/img/foto1.jpg" alt="Product 1" class="w-full h-32 object-cover mb-4">
+                <img src="src/img/foto1.jpg" alt="Product 1" class="w-full h-32 object-cover mb-4">
                 <h2 class="text-lg font-bold">Produk 1</h2>
                 <p class="text-gray-500">Deskripsi produk 2.</p>
                 <p class="text-gray-900 font-bold mt-2">Tersedia</p>
             </div>
             <div class="bg-white rounded-lg shadow-lg p-4">
-                <img src="/src/img/foto1.jpg" alt="Product 1" class="w-full h-32 object-cover mb-4">
+                <img src="src/img/foto1.jpg" alt="Product 1" class="w-full h-32 object-cover mb-4">
                 <h2 class="text-lg font-bold">Produk 1</h2>
                 <p class="text-gray-500">Deskripsi produk 1.</p>
                 <p class="text-gray-900 font-bold mt-2">Tersedia</p>
             </div>
             <div class="bg-white rounded-lg shadow-lg p-4">
-                <img src="/src/img/foto1.jpg" alt="Product 1" class="w-full h-32 object-cover mb-4">
+                <img src="src/img/foto1.jpg" alt="Product 1" class="w-full h-32 object-cover mb-4">
                 <h2 class="text-lg font-bold">Produk 1</h2>
                 <p class="text-gray-500">Deskripsi produk 1.</p>
                 <p class="text-gray-900 font-bold mt-2">Tersedia</p>
             </div>     
         </div>
-        <!-- Tambahkan produk lainnya sesuai kebutuhan -->
-    </div>
+    </div> -->
+    <!-- Tambahkan produk lainnya sesuai kebutuhan -->
 </body>
 </html>
